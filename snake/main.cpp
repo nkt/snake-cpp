@@ -1,17 +1,9 @@
 #include <iostream>
 
 #ifdef __APPLE__
-
 #include <GLUT/glut.h>
-#include <OpenGL/gl.h>
-#include <OpenGL/glu.h>
-
 #else
-
 #include <GL/glut.h>
-#include <GL/glu.h>
-#include <GL/gl.h>
-
 #endif
 
 #include "Snake.h"
@@ -36,16 +28,17 @@ const int
         ESCAPE_KEY = 27,
         FPS = 100,
         SCALE = 25,
-        N = 30,
+        N = 40,
         M = 20,
         WIDTH = SCALE * N,
         HEIGHT = SCALE * M;
 
 const rgb
-        BACKGROUND_COLOR(0xffffff),
-        GRID_COLOR(0x000000),
-        SNAKE_COLOR(0x123456),
-        FRUIT_COLOR(0x4aba8d);
+        BACKGROUND_COLOR(0xf2f0bb),
+        GRID_COLOR(0xb6b6b6),
+        SNAKE_COLOR(0x33c9d8),
+        SNAKE_HEAD_COLOR(0x336bd8),
+        FRUIT_COLOR(0x34bd24);
 
 
 void display();
@@ -85,30 +78,20 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-void bot() {
-    auto snakeHead = snake->parts.front();
-    if (snakeHead.x == fruit->c.x) {
-        if (snakeHead.y < fruit->c.y) { // go to up
-            snake->up();
-        } else { // go to down
-            snake->down();
-        }
-    } else {
-        if (snakeHead.x < fruit->c.x) { // go to right
-            snake->right();
-        } else { // go to left
-            snake->left();
-        }
-    }
-}
-
 void timer(int value) {
-    bot();
-    snake->move();
-    if (fruit->c == snake->parts.front()) {
-        snake->eat(*fruit);
-        delete fruit;
-        fruit = new Fruit(N, M);
+    try {
+        snake->move();
+        if (fruit->c == snake->parts.front()) {
+            snake->eat(*fruit);
+            delete fruit;
+            
+            fruit = new Fruit(N, M);
+        }
+        snake->goTo(fruit->c.x, fruit->c.y);
+    } catch(const char *e) {
+        cout << e << endl;
+        cout << "You've got " << snake->parts.size() << endl;
+        exit(0);
     }
     
     display();
@@ -127,9 +110,15 @@ void drawFruit() {
 }
 
 void drawSnake() {
-    glColor3f(SNAKE_COLOR.r, SNAKE_COLOR.g, SNAKE_COLOR.b);
+    bool head = true;
     for (auto part : snake->parts) {
-        glRectf(part.x * SCALE, part.y * SCALE, (part.x + 0.99) * SCALE, (part.y + 0.99) * SCALE);
+        if (head) {
+            glColor3f(SNAKE_HEAD_COLOR.r, SNAKE_HEAD_COLOR.g, SNAKE_HEAD_COLOR.b);
+            head = false;
+        } else {
+            glColor3f(SNAKE_COLOR.r, SNAKE_COLOR.g, SNAKE_COLOR.b);
+        }
+        drawCoordinate(part);
     }
 }
 
@@ -150,10 +139,10 @@ void drawGrid() {
 
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
-
-    drawGrid();
+    
     drawSnake();
     drawFruit();
+    drawGrid();
 
     glFlush();
 }

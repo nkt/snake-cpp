@@ -34,30 +34,16 @@ public:
         LEFT, RIGHT, UP, DOWN
     };
     unsigned direction;
-
     list<coordinate> parts;
-
+public:
     Snake(int x, int y, unsigned direction = LEFT);
-
     void eat(Fruit fruit);
-
     void move();
-
-    void up() {
-        direction = UP;
-    }
-
-    void down() {
-        direction = DOWN;
-    }
-
-    void left() {
-        direction = LEFT;
-    }
-
-    void right() {
-        direction = RIGHT;
-    }
+    void up();
+    void down();
+    void left();
+    void right();
+    void goTo(int x, int y);
 };
 
 #endif
