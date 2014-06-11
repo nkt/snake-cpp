@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		00EE3C231948A910007D69FB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00EE3C221948A910007D69FB /* main.cpp */; };
-		00EE3C251948A910007D69FB /* snake.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00EE3C241948A910007D69FB /* snake.1 */; };
+		00EE3C2D1948A928007D69FB /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EE3C2B1948A928007D69FB /* GLUT.framework */; };
+		00EE3C2E1948A928007D69FB /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EE3C2C1948A928007D69FB /* OpenGL.framework */; };
+		00EE3C301948A92D007D69FB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EE3C2F1948A92D007D69FB /* Cocoa.framework */; };
+		00EE3C331948A98F007D69FB /* Snake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00EE3C311948A98F007D69FB /* Snake.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -18,7 +21,6 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				00EE3C251948A910007D69FB /* snake.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -27,7 +29,11 @@
 /* Begin PBXFileReference section */
 		00EE3C1F1948A910007D69FB /* snake */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = snake; sourceTree = BUILT_PRODUCTS_DIR; };
 		00EE3C221948A910007D69FB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		00EE3C241948A910007D69FB /* snake.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = snake.1; sourceTree = "<group>"; };
+		00EE3C2B1948A928007D69FB /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		00EE3C2C1948A928007D69FB /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		00EE3C2F1948A92D007D69FB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		00EE3C311948A98F007D69FB /* Snake.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Snake.cpp; sourceTree = "<group>"; };
+		00EE3C321948A98F007D69FB /* Snake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snake.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +41,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00EE3C301948A92D007D69FB /* Cocoa.framework in Frameworks */,
+				00EE3C2D1948A928007D69FB /* GLUT.framework in Frameworks */,
+				00EE3C2E1948A928007D69FB /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +53,9 @@
 		00EE3C161948A910007D69FB = {
 			isa = PBXGroup;
 			children = (
+				00EE3C2F1948A92D007D69FB /* Cocoa.framework */,
+				00EE3C2B1948A928007D69FB /* GLUT.framework */,
+				00EE3C2C1948A928007D69FB /* OpenGL.framework */,
 				00EE3C211948A910007D69FB /* snake */,
 				00EE3C201948A910007D69FB /* Products */,
 			);
@@ -60,8 +72,9 @@
 		00EE3C211948A910007D69FB /* snake */ = {
 			isa = PBXGroup;
 			children = (
+				00EE3C311948A98F007D69FB /* Snake.cpp */,
+				00EE3C321948A98F007D69FB /* Snake.h */,
 				00EE3C221948A910007D69FB /* main.cpp */,
-				00EE3C241948A910007D69FB /* snake.1 */,
 			);
 			path = snake;
 			sourceTree = "<group>";
@@ -117,6 +130,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00EE3C331948A98F007D69FB /* Snake.cpp in Sources */,
 				00EE3C231948A910007D69FB /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
